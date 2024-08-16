@@ -23,33 +23,30 @@ export const useFirebase = () => {
   }, []);
 
   // share hospitals functionality
-  // const shareHospitals = useCallback(async () => {
-  //   const hospitalsRef = doc(db, "hospitals");
-  //   const hospitalsSnapshot = await getDoc(hospitalsRef);
-  //   const hospitalsData = hospitalsSnapshot.docs.map((doc) => doc.data());
+  const shareHospitals = useCallback(async () => {
+    const hospitalsRef = collection(db, "hospitals");
+    const hospitalsSnapshot = await getDocs(hospitalsRef);
+    const hospitalsData = hospitalsSnapshot.docs.map((doc: any) => doc.data());
 
-  //   const csvData = Papa.unparse(hospitalsData, {
-  //     header: true,
-  //     delimiter: ",",
-  //   });
+    const csvData = Papa.unparse(hospitalsData, {
+      header: true,
+      delimiter: ",",
+    });
 
-  //   const blob = new Blob([csvData], { type: "text/csv;charset=utf-8;" });
-  //   const url = window.URL.createObjectURL(blob);
-  //   const link = document.createElement("a");
-  //   link.href = url;
-  //   link.setAttribute("download", "hospitals.csv");
-  //   document.body.appendChild(link);
-  //   link.click();
-  //   document.body.removeChild(link);
-  // }, []);
+    const blob = new Blob([csvData], { type: "text/csv;charset=utf-8;" });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", "hospitals.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }, []);
 
-  // const login = useCallback((email: string, password: string) => {
-  //   auth.signInWithEmailAndPassword(email, password);
-  // }, []);
+
 
   return {
-    // login,
     exportHospitals,
-    // shareHospitals,
+    shareHospitals,
   };
 };

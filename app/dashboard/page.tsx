@@ -12,19 +12,17 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import { useHospitalsCollection } from "../utils/hospitalsCollection";
-import ShareButton from "../components/ShareButton";
 import "../globals.css";
 import { useFirebase } from "../hooks/useFirebase";
 import { auth } from "../config/firebase";
 import Login from "../page";
 import { User } from "firebase/auth";
 import HospitalEntryModal from "../components/HospitalEntryModal";
-import {filteredHospitals}  from "../utils/firebaseHospitalsCollection";
 
 export default function Home() {
   const { isLoading, data } = useQuery("location", fetchHospitals);
   const { addHospitals } = useHospitalsCollection();
-  const { exportHospitals } = useFirebase();
+  const { exportHospitals, shareHospitals } = useFirebase();
 
   const [location, setLocation] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -33,35 +31,32 @@ export default function Home() {
   const [openModal, setOpenModal] = useState(false);
   const [openEntryModal, setOpenEntryModal] = useState<Boolean>(false);
 
-  if (data) {
-    addHospitals();
-  }
-
-
-  // const filteredHospitals = (data ?? ([] as Hospital[])).filter(
-  //   (hospital: Hospital) =>
-  //     hospital.name.toLowerCase().includes(location.toLowerCase())
-  // );
+  const filteredHospitals = (data ?? ([] as Hospital[])).filter(
+    (hospital: Hospital) =>
+      hospital.name.toLowerCase().includes(location.toLowerCase())
+  );
 
   const handleAddHospitals = async () => {
     await addHospitals();
   };
 
-  const handleAddHospital = () => {
+  const handleAddHospital = ()=>{
     setOpenEntryModal(true);
-  };
+  }
 
   const handleExportHospitals = async () => {
     await exportHospitals();
   };
 
-  const handleShare = (event: React.MouseEvent<HTMLButtonElement>) => {
-    console.log(event);
-  };
+  const handleShare = async () =>{
+    await shareHospitals()
+  }
 
   const handleLocationChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setLocation(event.target.value);
   };
+
+
 
   const handlePageChange = (
     event: React.ChangeEvent<unknown>,
@@ -177,7 +172,7 @@ export default function Home() {
                 color="primary"
                 onClick={handleAddHospitals}
               >
-                Add to collection
+                Save Data
               </Button>
             </div>
             <div className="my-2">
@@ -283,10 +278,9 @@ export default function Home() {
                 </p>
                 <p className="py-2">{hospital.email}</p>
                 <p className="py-6">
-                  <ShareButton hospital={hospital} />
-                  {/* <Button variant="outlined" startIcon={<ShareOutlinedIcon />} onClick={handleShare}>
+                  <Button variant="outlined" startIcon={<ShareOutlinedIcon />} onClick={handleShare}>
                     Share
-                  </Button> */}
+                  </Button>
                 </p>
               </Grid>
             ))}

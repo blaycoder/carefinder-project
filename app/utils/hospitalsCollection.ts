@@ -3,7 +3,7 @@ import { Hospital } from "../types";
 import { fetchHospitals } from "../utils/api";
 import { useQuery } from "react-query";
 import db from "../utils/firestore";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, getDocs } from "firebase/firestore";
 
 export const useHospitalsCollection = () => {
   // const [location, setLocation] = useState<string>(""); // Ensure location is a string
@@ -20,22 +20,24 @@ export const useHospitalsCollection = () => {
   // );
 
   const dbInstance = collection(db, "hospitals");
-
   const addHospitals = async () => {
-    try {
-      await Promise.all(
-        allHospitals.map((hospital: Hospital) =>
-          addDoc(dbInstance, {
-            id: hospital.id.toString(),
-            name: hospital.name,
-            address: hospital.address,
-            phone_number: hospital.phone_number,
-          })
-        )
-      );
-      console.log("Hospitals added successfully.");
-    } catch (e) {
-      console.error("Error adding hospitals: ", e);
+    const dbInstanceSnapshot = await getDocs(dbInstance);
+    if (dbInstanceSnapshot.empty) {
+      try {
+        await Promise.all(
+          allHospitals.map((hospital: Hospital) =>
+            addDoc(dbInstance, {
+              id: hospital.id.toString(),
+              name: hospital.name,
+              address: hospital.address,
+              phone_number: hospital.phone_number,
+            })
+          )
+        );
+        console.log("Hospitals added successfully.");
+      } catch (e) {
+        console.error("Error adding hospitals: ", e);
+      }
     }
   };
 
