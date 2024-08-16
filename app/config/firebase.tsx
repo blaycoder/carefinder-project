@@ -6,7 +6,7 @@ import {
   GoogleAuthProvider,
   Auth,
 } from "firebase/auth";
-// import "firebase/dynamic-links";
+
 const API_KEY = process.env.NEXT_PUBLIC_FIREBASE_API_KEY;
 const AUTH_DOMAIN = process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN;
 const PROJECT_ID = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID;

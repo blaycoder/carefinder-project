@@ -249,10 +249,6 @@ export default function Home() {
           </Grid>
         ) : paginatedResults.length > 0 ? (
           <div
-            // key={Math.floor(Math.random() * (5000 - 1 + 1)) + 1}
-            // container
-            // spacing={{ xs: 2, md: 3 }}
-            // columns={{ xs: 4, sm: 8, md: 12 }}
             className="hospital-data-container my-5 flex flex-column flex-wrap justify-between gap-2"
           >
             {paginatedResults.map((hospital: Hospital) => (
