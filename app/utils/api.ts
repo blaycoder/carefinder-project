@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API_URL =
-  process.env.NEXT_PUBLIC_API_URL || "https://api.reliancehmo.com/v3/providers";
+  process.env.NEXT_PUBLIC_FIREBASE_API_URL || "https://api.reliancehmo.com/v3/providers";
 
 //Fetches data from the API based on the provided location.
 export const fetchHospitals = async () => {
