@@ -7,15 +7,16 @@ import {
   Auth
 } from "firebase/auth";
 // import "firebase/dynamic-links";
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBBZ0_cGyh6YMr4p3jQW5P4cI4Pppm_MgI",
-  authDomain: "carefinder-11ab8.firebaseapp.com",
-  projectId: "carefinder-11ab8",
-  storageBucket: "carefinder-11ab8.appspot.com",
-  messagingSenderId: "971737671259",
-  appId: "1:971737671259:web:23b98754060133fe7cc17e",
-  measurementId: "G-V6HGYLKN11",
+  apiKey: API_KEY,
+  authDomain: "carefinder-project-52711.firebaseapp.com",
+  projectId: "carefinder-project-52711",
+  storageBucket: "carefinder-project-52711.appspot.com",
+  messagingSenderId: "577068268519",
+  appId: "1:577068268519:web:797406965090ca9d1b9b42",
+  measurementId: "G-W595SEGVV4",
 };
 
 export const app = initializeApp(firebaseConfig);
