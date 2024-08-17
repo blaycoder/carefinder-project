@@ -104,7 +104,7 @@ const Login: React.FC = () => {
             />
           )}
           <Button type="submit" variant="contained" color="primary" fullWidth>
-            {isLogin ? "Login" : "Sign Up"}
+            {isLogin ? "Welcome Back 😊" : "Sign Up"}
           </Button>
         </form>
         <Box mt={2}>
