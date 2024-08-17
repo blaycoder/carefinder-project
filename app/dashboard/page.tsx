@@ -11,7 +11,7 @@ import { Pagination, Modal, Typography, Box } from "@mui/material";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
-import { useHospitalsCollection } from "../utils/hospitalsCollection";
+// import { useHospitalsCollection } from "../utils/hospitalsCollection";
 import "../globals.css";
 import { useFirebase } from "../hooks/useFirebase";
 import { auth } from "../config/firebase";
@@ -21,7 +21,7 @@ import HospitalEntryModal from "../components/HospitalEntryModal";
 
 export default function Home() {
   const { isLoading, data } = useQuery("location", fetchHospitals);
-  const { addHospitals } = useHospitalsCollection();
+  // const { addHospitals } = useHospitalsCollection();
   const { exportHospitals, shareHospitals } = useFirebase();
 
   const [location, setLocation] = useState("");
@@ -36,9 +36,9 @@ export default function Home() {
       hospital.name.toLowerCase().includes(location.toLowerCase())
   );
 
-  const handleAddHospitals = async () => {
-    await addHospitals();
-  };
+  // const handleAddHospitals = async () => {
+  //   await addHospitals();
+  // };
 
   const handleAddHospital = ()=>{
     setOpenEntryModal(true);
@@ -167,7 +167,7 @@ export default function Home() {
             {openEntryModal && (
               <HospitalEntryModal onClose={() => setOpenEntryModal(false)} />
             )}
-            <div className="my-2">
+            {/* <div className="my-2">
               <Button
                 variant="contained"
                 color="primary"
@@ -175,7 +175,7 @@ export default function Home() {
               >
                 Save Data
               </Button>
-            </div>
+            </div> */}
             <div className="my-2">
               <Button
                 variant="contained"
