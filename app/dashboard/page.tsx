@@ -98,7 +98,7 @@ export default function Home() {
   const paginatedResults = filteredHospitals.slice(startIndex, endIndex);
 
   return (
-    <main className="w-9/12">
+    <main>
       <Modal
         open={openModal}
         onClose={handleCloseModal}
