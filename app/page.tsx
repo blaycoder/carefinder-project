@@ -71,7 +71,9 @@ const Login: React.FC = () => {
           borderRadius: 2,
         }}
       >
-        <Typography variant="h5">{isLogin ? "Login" : "Sign Up"}</Typography>
+        <Typography variant="h5">
+          {isLogin ? "Welcome Back 😊" : "Sign Up"}
+        </Typography>
         <form onSubmit={handleSubmit(onSubmit)} className="w-full">
           <TextField
             label="Email"
@@ -104,7 +106,7 @@ const Login: React.FC = () => {
             />
           )}
           <Button type="submit" variant="contained" color="primary" fullWidth>
-            {isLogin ? "Welcome Back 😊" : "Sign Up"}
+            {isLogin ? "Login" : "Sign Up"}
           </Button>
         </form>
         <Box mt={2}>
@@ -123,7 +125,7 @@ const Login: React.FC = () => {
             onClick={() => signInWithProvider(facebookAuthProvider)}
             sx={{ mt: 1 }}
           >
-            <FacebookOutlinedIcon/>
+            <FacebookOutlinedIcon />
             Login with Facebook
           </Button>
         </Box>
