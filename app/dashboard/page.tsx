@@ -21,7 +21,7 @@ import HospitalEntryModal from "../components/HospitalEntryModal";
 
 export default function Home() {
   const { isLoading, data } = useQuery("location", fetchHospitals);
-  // const { addHospitals } = useHospitalsCollection();
+  const { addHospitals } = useHospitalsCollection();
   const { exportHospitals, shareHospitals } = useFirebase();
 
   const [location, setLocation] = useState("");
@@ -36,9 +36,9 @@ export default function Home() {
       hospital.name.toLowerCase().includes(location.toLowerCase())
   );
 
-  // const handleAddHospitals = async () => {
-  //   await addHospitals();
-  // };
+  const handleAddHospitals = async () => {
+    await addHospitals();
+  };
 
   const handleAddHospital = ()=>{
     setOpenEntryModal(true);
@@ -167,7 +167,7 @@ export default function Home() {
             {openEntryModal && (
               <HospitalEntryModal onClose={() => setOpenEntryModal(false)} />
             )}
-            {/* <div className="my-2">
+            <div className="my-2">
               <Button
                 variant="contained"
                 color="primary"
@@ -175,7 +175,7 @@ export default function Home() {
               >
                 Save Data
               </Button>
-            </div> */}
+            </div>
             <div className="my-2">
               <Button
                 variant="contained"
@@ -249,7 +249,9 @@ export default function Home() {
             </Grid>
           </Grid>
         ) : paginatedResults.length > 0 ? (
-          <div className="hospital-data-container my-5 flex flex-column flex-wrap justify-between gap-2">
+          <div
+            className="hospital-data-container my-5 flex flex-column flex-wrap justify-between gap-2"
+          >
             {paginatedResults.map((hospital: Hospital) => (
               <Grid
                 item
@@ -273,11 +275,7 @@ export default function Home() {
                 </p>
                 <p className="py-2">{hospital.email}</p>
                 <p className="py-6">
-                  <Button
-                    variant="outlined"
-                    startIcon={<ShareOutlinedIcon />}
-                    onClick={handleShare}
-                  >
+                  <Button variant="outlined" startIcon={<ShareOutlinedIcon />} onClick={handleShare}>
                     Share
                   </Button>
                 </p>
