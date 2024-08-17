@@ -21,7 +21,7 @@ const Home: React.FC = () => {
             </p>
             <div className="mt-12">
               <Button variant="contained" onClick={handleRedirect}>
-                Sign up
+                Get Started
               </Button>
             </div>
           </div>
