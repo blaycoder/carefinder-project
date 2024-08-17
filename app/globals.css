@@ -74,6 +74,13 @@
   margin: 0 auto;
 }
 
+.home-container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 @media only screen and (max-width: 768px){
 .hospital-data-container{
   display: grid;
@@ -86,6 +93,8 @@
   display: block;
 }
 }
+
+
 
 
 /* .container {

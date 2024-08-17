@@ -1,11 +1,12 @@
 "use client"; // Add this directive
 
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { useState } from "react";
+import { cookies } from "next/headers";
 
-const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({ subsets: ["latin"], weight: ["100","400","500", "700","800","900"] });
 
 export default function RootLayout({
   children,
@@ -18,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <QueryClientProvider client={queryClient}>
         <body
-          className={`${inter.className} w-9/12`}
+          className={`${poppins.className}`}
         >
           {children}
         </body>

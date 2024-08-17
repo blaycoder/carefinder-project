@@ -98,7 +98,7 @@ export default function Home() {
   const paginatedResults = filteredHospitals.slice(startIndex, endIndex);
 
   return (
-    <main>
+    <main className="w-9/12">
       <Modal
         open={openModal}
         onClose={handleCloseModal}
@@ -129,6 +129,7 @@ export default function Home() {
 
       <section className="my-5">
         <div className="text-center">
+          <h3>Welcome, {user.displayName}</h3>
           <h1 className="text-4xl py-2 font-bold text-sky-700">
             Find the right hospital for you
           </h1>
@@ -248,9 +249,7 @@ export default function Home() {
             </Grid>
           </Grid>
         ) : paginatedResults.length > 0 ? (
-          <div
-            className="hospital-data-container my-5 flex flex-column flex-wrap justify-between gap-2"
-          >
+          <div className="hospital-data-container my-5 flex flex-column flex-wrap justify-between gap-2">
             {paginatedResults.map((hospital: Hospital) => (
               <Grid
                 item
@@ -274,7 +273,11 @@ export default function Home() {
                 </p>
                 <p className="py-2">{hospital.email}</p>
                 <p className="py-6">
-                  <Button variant="outlined" startIcon={<ShareOutlinedIcon />} onClick={handleShare}>
+                  <Button
+                    variant="outlined"
+                    startIcon={<ShareOutlinedIcon />}
+                    onClick={handleShare}
+                  >
                     Share
                   </Button>
                 </p>
