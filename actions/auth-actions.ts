@@ -9,7 +9,7 @@ export async function createSession(uid:string) {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
         maxAge: 60 * 60 * 12,
-        path: '/',
+        path: '/register',
     });
     redirect(HOME_ROUTE);
 }

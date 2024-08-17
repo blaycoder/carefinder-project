@@ -18,11 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <QueryClientProvider client={queryClient}>
-        <body
-          className={`${poppins.className}`}
-        >
-          {children}
-        </body>
+        <body className={`${poppins.className} w-9/12`}>{children}</body>
       </QueryClientProvider>
     </html>
   );

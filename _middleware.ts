@@ -6,7 +6,7 @@ const protectedRoutes = [HOME_ROUTE];
 export default function middleware(request: NextRequest) {
   const session = request.cookies.get(SESSION_COOKIE_NAME)?.value || "";
 
-  //Redirect to login if there is no session
+  //Redirect to landing page if there is no session
   if (!session && protectedRoutes.includes(request.nextUrl.pathname)) {
     const absoluteURL = new URL(ROOT_ROUTE, request.nextUrl.origin);
     return NextResponse.redirect(absoluteURL.toString());

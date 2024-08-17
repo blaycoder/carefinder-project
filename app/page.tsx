@@ -10,11 +10,6 @@ const Home: React.FC = () => {
     router.push("/register");
   };
   return (
-    <html lang="en">
-      <head>
-        <title>Home | Carefinder</title>
-      </head>
-      <body>
         <main className="home-container">
           <div className="hero-banner text-center">
             <h1 className="font-bold text-5xl p-6 text-blue-800">
@@ -31,8 +26,6 @@ const Home: React.FC = () => {
             </div>
           </div>
         </main>
-      </body>
-    </html>
   );
 };
 
