@@ -40,38 +40,27 @@ export default function Home() {
   //   await addHospitals();
   // };
 
-  const handleAddHospital = ()=>{
+  const handleAddHospital = () => {
     setOpenEntryModal(true);
-  }
+  };
 
   const handleExportHospitals = async () => {
     await exportHospitals();
   };
 
-  const handleShare = async () =>{
-    await shareHospitals()
-  }
+  const handleShare = async () => {
+    await shareHospitals();
+  };
 
   const handleLocationChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setLocation(event.target.value);
   };
-
-
 
   const handlePageChange = (
     event: React.ChangeEvent<unknown>,
     value: number
   ) => {
     setCurrentPage(value);
-  };
-
-  const handleSignOut = async () => {
-    try {
-      await auth.signOut();
-      setUser(null);
-    } catch (error) {
-      console.error("Error signing out:", error);
-    }
   };
 
   useEffect(() => {
@@ -140,34 +129,36 @@ export default function Home() {
         </div>
       </section>
       <Grid container spacing={2}>
-        <Grid item xs={12} className="my-3">
-          <TextField
-            label="Enter your location"
-            value={location}
-            onChange={handleLocationChange}
-            // onClick={handleSearch}
-            fullWidth
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <ButtonGroup
-            aria-label="button group"
-            variant="outlined"
-            className="btn-group"
-          >
-            <div className="my-2">
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={handleAddHospital}
-              >
-                Add Hospital Entry
-              </Button>
-            </div>
-            {openEntryModal && (
-              <HospitalEntryModal onClose={() => setOpenEntryModal(false)} />
-            )}
-            {/* <div className="my-2">
+        <div className="db-actions-container">
+          <Grid item xs={12} className="my-3">
+            <TextField
+              label="Enter your location"
+              value={location}
+              onChange={handleLocationChange}
+              // onClick={handleSearch}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <ButtonGroup
+              aria-label="button group"
+              variant="outlined"
+              className="btn-group"
+            >
+              <div className="my-2">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={handleAddHospital}
+                  className="bg-blue-600 text-white px-6 rounded-2xl hover:bg-blue-800"
+                >
+                  Add Hospital Entry
+                </Button>
+              </div>
+              {openEntryModal && (
+                <HospitalEntryModal onClose={() => setOpenEntryModal(false)} />
+              )}
+              {/* <div className="my-2">
               <Button
                 variant="contained"
                 color="primary"
@@ -176,26 +167,19 @@ export default function Home() {
                 Save Data
               </Button>
             </div> */}
-            <div className="my-2">
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={handleExportHospitals}
-              >
-                Export Hospitals
-              </Button>
-            </div>
-            <div className="my-2">
-              <Button
-                variant="outlined"
-                color="primary"
-                onClick={handleSignOut}
-              >
-                Sign Out
-              </Button>
-            </div>
-          </ButtonGroup>
-        </Grid>
+              <div className="my-2">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  className="bg-blue-600 text-white px-6 rounded-2xl hover:bg-blue-800"
+                  onClick={handleExportHospitals}
+                >
+                  Export Hospitals
+                </Button>
+              </div>
+            </ButtonGroup>
+          </Grid>
+        </div>
         {isLoading ? (
           <Grid
             key={1}
@@ -249,9 +233,7 @@ export default function Home() {
             </Grid>
           </Grid>
         ) : paginatedResults.length > 0 ? (
-          <div
-            className="hospital-data-container my-5 flex flex-column flex-wrap justify-between gap-2"
-          >
+          <div className="hospital-data-container my-5 flex flex-column flex-wrap justify-between gap-2">
             {paginatedResults.map((hospital: Hospital) => (
               <Grid
                 item
@@ -275,7 +257,11 @@ export default function Home() {
                 </p>
                 <p className="py-2">{hospital.email}</p>
                 <p className="py-6">
-                  <Button variant="outlined" startIcon={<ShareOutlinedIcon />} onClick={handleShare}>
+                  <Button
+                    variant="outlined"
+                    startIcon={<ShareOutlinedIcon />}
+                    onClick={handleShare}
+                  >
                     Share
                   </Button>
                 </p>

@@ -14,7 +14,8 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
-import { error } from "console";
+import { createSession } from "@/actions/auth-actions";
+
 
 interface FormValues {
   email: string;
@@ -35,6 +36,7 @@ const Login: React.FC = () => {
     try {
       if (isLogin) {
         await signInWithEmailAndPassword(auth, data.email, data.password);
+        await createSession(data.email);
       } else {
         if (data.password !== data.confirmPassword) {
           console.error("Passwords do not match");
@@ -56,6 +58,7 @@ const Login: React.FC = () => {
       if (!result || !result.user) {
         throw new Error("Sign in failed");
       }
+      await createSession(result.user.uid)
       router.push("/dashboard");
     } catch (error) {
       console.error("Error signing in with provider:", error);
