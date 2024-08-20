@@ -1,12 +1,12 @@
 "use client"; // Add this directive
 
-import { Poppins } from "next/font/google";
-import "./globals.css";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { useState } from "react";
-import { getCookie } from 'cookies-next'
-import Header from "./components/header";
 import { SESSION_COOKIE_NAME } from "@/constants";
+import { getCookie } from 'cookies-next';
+import { Poppins } from "next/font/google";
+import { useState } from "react";
+import { QueryClient, QueryClientProvider } from "react-query";
+import Header from "./components/header";
+import "./globals.css";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["100","400","500", "700","800","900"] });
 
@@ -15,8 +15,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-    const session = getCookie(SESSION_COOKIE_NAME)?.value || null;
-
+    const session = getCookie(SESSION_COOKIE_NAME)?.valueOf || null;
+    console.log(session)
   const [queryClient] = useState(() => new QueryClient());
 
   return (
@@ -24,7 +24,7 @@ export default function RootLayout({
       <QueryClientProvider client={queryClient}>
         <body className={`${poppins.className}`}>
           {" "}
-          <Header session={session} />
+          {(session !== null) ? <Header session={session()} /> : <Header session= ''/>}
           {children}
         </body>
       </QueryClientProvider>
