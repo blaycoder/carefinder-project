@@ -37,13 +37,23 @@ export const useFirebase = () => {
     const url = window.URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.setAttribute("download", "hospitals.csv");
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    link.setAttribute("download", "list of hospitals.csv")
+    const shareLink = document.body.appendChild(link);
+    if (navigator.canShare()) {
+      console.log("can share");
+      try {
+        await navigator.share({
+          title: "List of hospitals",
+          url: `${shareLink}`,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    
   }, []);
 
-
+  
 
   return {
     exportHospitals,
