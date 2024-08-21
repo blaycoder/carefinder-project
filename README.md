@@ -34,3 +34,19 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+**Features**
+Hospital Search: Users can search for hospitals within their region by inputting their location or selecting from a list of nearby cities. The platform displays hospitals along with their contact details, including address, phone number, and email.
+
+**Export Hospitals**: Users can export the list of hospitals to a CSV file, allowing them to save and share the information easily. This feature leverages Firebase's file storage capabilities.
+
+**Share Hospitals**: Users can share the hospital list via email or by generating a shareable link, utilizing Firebase's email and link-sharing functionalities.
+
+**User Authentication:** Admin users must create an account to access the platform's admin features. This is implemented using Firebase's authentication feature, supporting multiple authentication methods like email/password and social media logins.
+
+**Markdown Support:** Admin users can create hospital entries and corresponding details using markdown, which allows for easy formatting, link insertion, and image embedding. A simple text editor with markdown syntax support is provided.
+
+**Prerequisites**
+1. Node.js and npm installed on your machine.
+2. Firebase account set up for backend service
