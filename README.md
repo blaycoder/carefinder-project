@@ -1,5 +1,25 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+# CareFinder
+
+Carefinder is a simple tool designed to help users find, export, and share hospitals within their region. Access to healthcare in Nigeria can be challenging, and Carefinder aims to simplify the process by providing a platform to easily locate and share hospital information.
+
+## Features
+Hospital Search: Users can search for hospitals within their region by inputting their location or selecting from a list of nearby cities. The platform displays hospitals along with their contact details, including address, phone number, and email.
+
+**Export Hospitals**: Users can export the list of hospitals to a CSV file, allowing them to save and share the information easily. This feature leverages Firebase's file storage capabilities.
+
+**Share Hospitals**: Users can share the hospital list via email or by generating a shareable link, utilizing Firebase's email and link-sharing functionalities.
+
+**User Authentication:** Admin users must create an account to access the platform's admin features. This is implemented using Firebase's authentication feature, supporting multiple authentication methods like email/password and social media logins.
+
+**Markdown Support:** Admin users can create hospital entries and corresponding details using markdown, which allows for easy formatting, link insertion, and image embedding. A simple text editor with markdown syntax support is provided.
+
+## Prerequisites
+1. Node.js and npm installed on your machine.
+2. Firebase account set up for backend service
+
+
 ## Getting Started
 
 First, run the development server:
