@@ -4,6 +4,13 @@ export interface Hospital {
   address: string;
   phone_number: string;
   email: string;
-  description ?: string
+  description ?: string,
+  state:{
+    name: string
+  },
+  type:{
+    name: string,
+  }
 }
+
 

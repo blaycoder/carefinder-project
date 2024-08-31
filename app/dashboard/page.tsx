@@ -11,6 +11,8 @@ import { Pagination, Modal, Typography, Box } from "@mui/material";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
+import LocalHospitalOutlinedIcon from "@mui/icons-material/LocalHospitalOutlined";
+import AddLocationOutlinedIcon from "@mui/icons-material/AddLocationOutlined";
 // import { useHospitalsCollection } from "../utils/hospitalsCollection";
 import "../globals.css";
 import { useFirebase } from "../hooks/useFirebase";
@@ -248,9 +250,18 @@ export default function Home() {
                   {hospital.name}
                 </h2>
                 <p className="py-2">
+                  <LocalHospitalOutlinedIcon />
+                  {hospital.type.name}
+                </p>
+                <p className="py-2">
+                  <AddLocationOutlinedIcon /> 
+                  {hospital.state.name} State
+                </p>
+                <p className="py-2">
                   <HomeOutlinedIcon />
                   {hospital.address}
                 </p>
+
                 <p className="py-2">
                   <LocalPhoneOutlinedIcon />
                   {hospital.phone_number}
