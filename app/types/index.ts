@@ -5,10 +5,10 @@ export interface Hospital {
   phone_number: string;
   email: string;
   description ?: string,
-  state:{
+  state?:{
     name: string
   },
-  type:{
+  type?:{
     name: string,
   }
 }
